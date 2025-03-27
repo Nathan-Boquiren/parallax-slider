@@ -1,0 +1,104 @@
+*, html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100vh;
+    position: relative;
+    background-color: black;
+}
+
+.slider-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    white-space: nowrap;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+}
+
+.slider-container::-webkit-scrollbar {
+    display: none;
+}
+
+.slider-container .slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    transition: background-position 1s ease;
+    scroll-snap-align: start;
+}
+
+/* slide animation */
+
+.slider-container .slide.slide-in-r {
+    animation: slideFromRight 1s ease forwards;
+}
+
+@keyframes slideFromRight {
+    from {
+        background-position: 20rem center;
+    }
+
+    to {
+        background-position: 0px center;
+    }
+}
+
+.slider-container .slide.slide-in-l {
+    animation: slideFromLeft 1s ease forwards;
+}
+
+@keyframes slideFromLeft {
+    from {
+        background-position: -20rem center;
+    }
+
+    to {
+        background-position: 0px center;
+    }
+}
+
+
+/* next and prev buttons */
+
+.btn {
+    position: fixed;
+    top: 50%;
+    left: 1rem;
+    z-index: 1;
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    aspect-ratio: 1;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+#next-btn {
+    left: unset;
+    right: 1rem;
+}
+
+.btn:hover, .btn:focus {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.btn:active {
+    background-color: rgba(0, 0, 0, 0.6);
+}
